@@ -24,7 +24,7 @@ final class DeployConfig implements \JsonSerializable, InterfaceArrayable
     )
     {
         $this->m_restartPolicy = $restartPolicy;
-        $this->m_deploymentMode = $deploymentMode;
+        $this->m_deploymentMode = $mode;
         $this->m_resourceConfig = $resourceConfig;
         $this->m_updateConfig = $updateConfig;
         $this->m_rollbackConfig = $rollbackConfig;
@@ -61,7 +61,7 @@ final class DeployConfig implements \JsonSerializable, InterfaceArrayable
             $arrayForm['rollback_config'] = $this->m_rollbackConfig->toArray();
         }
 
-        if ($this->m_placement !== null)
+        if ($this->m_placementConfig !== null)
         {
             $arrayForm['placement'] = $this->m_placementConfig->toArray();
         }
