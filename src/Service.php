@@ -22,6 +22,7 @@ final class Service implements \JsonSerializable, InterfaceArrayable
     private ?BuildConfiguration $m_buildConfiguration;
     private ?LoggingConfiguration $m_loggingConfiguration;
     private ?array $m_links;
+    private ?string $m_pull_policy;
 
 
     /**
@@ -80,6 +81,7 @@ final class Service implements \JsonSerializable, InterfaceArrayable
         ?array $aliases = null,
         ?DeployConfig $deploymentConfig = null,
         ?ServiceCollection $dependencies = null,
+        ?string $pull_policy = null,
     )
     {
         $this->m_name = $name;
@@ -97,6 +99,7 @@ final class Service implements \JsonSerializable, InterfaceArrayable
         $this->m_dependencies = $dependencies;
         $this->m_loggingConfiguration = $logging;
         $this->m_links = $links;
+        $this->m_pull_policy = $pull_policy;
     }
 
 
@@ -195,7 +198,7 @@ final class Service implements \JsonSerializable, InterfaceArrayable
 
         if ($this->m_deploymentConfig !== null)
         {
-            $arrayForm['deploymentConfig'] = $this->m_deploymentConfig();
+            $arrayForm['deploymentConfig'] = $this->m_deploymentConfig;
         }
 
         if ($this->m_dependencies !== null)
