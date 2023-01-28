@@ -212,6 +212,11 @@ final class Service implements \JsonSerializable, InterfaceArrayable
             }
         }
 
+        if($this->m_pull_policy !== null)
+        {
+            $arrayForm['pull_policy'] = $this->m_pull_policy;
+        }
+
         return $arrayForm;
     }
 
